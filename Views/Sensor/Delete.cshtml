@@ -1,0 +1,65 @@
+﻿@model Arduino.Models.Arduino_Sensor_Master
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>        
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.SensorName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SensorName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SensorLocation)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SensorLocation)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SensorIP)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SensorIP)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.isActive)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.isActive)
+            </dd>
+               
+        </dl>
+    
+        @using (Html.BeginForm("Delete", "Sensor", FormMethod.Post, new { onsubmit = "return SubmitDELETEForm(this)" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.SensorID)
+            @Html.HiddenFor(model => model.SensorName)
+            <div class="form-actions no-color">
+                <input type="submit" value="Yes" class="btn btn-outline-info" />
+                &nbsp;&nbsp;
+                <input type="button" value="No" class="btn btn-default" data-dismiss="modal" aria-label="Close" />
+            </div>
+        }
+    </div>
+</body>
+</html>

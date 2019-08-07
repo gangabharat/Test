@@ -1,0 +1,66 @@
+﻿@model Arduino.Models.Arduino_Sensor_Master
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    
+    @using (Html.BeginForm("Add", "Sensor", FormMethod.Post, new { onsubmit = "return SubmitADDForm(this)" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true)
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.SensorName, new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.SensorName)
+                    @Html.ValidationMessageFor(model => model.SensorName)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.SensorLocation, new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.SensorLocation)
+                    @Html.ValidationMessageFor(model => model.SensorLocation)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.SensorIP, new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.SensorIP)
+                    @Html.ValidationMessageFor(model => model.SensorIP)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.isActive, new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.isActive)
+                    @Html.ValidationMessageFor(model => model.isActive)
+                </div>
+            </div>
+    
+           
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-outline-info" />
+                    <input type="reset" value="Reset" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+        
+</body>
+</html>
